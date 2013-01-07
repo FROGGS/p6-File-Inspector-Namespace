@@ -7,7 +7,7 @@ plan 13;
 
 # like can_ok
 for <parse namespace reset> -> $method {
-	ok File::Inspector::Namespace.^methods.first( $method ), "we can call File::Inspector::Namespace.$method"
+    ok File::Inspector::Namespace.^methods.first( $method ), "we can call File::Inspector::Namespace.$method"
 }
 
 # 'real' tests of the parser
