@@ -5,9 +5,11 @@ use File::Inspector::Namespace;
 
 plan 13;
 
-# like can_ok
+my $parser = File::Inspector::Namespace.new;
+
+# can_ok
 for <parse namespace reset> -> $method {
-    ok File::Inspector::Namespace.^methods.first( $method ), "we can call File::Inspector::Namespace.$method"
+    ok $parser.^can( $method ), "we can call File::Inspector::Namespace.$method"
 }
 
 # 'real' tests of the parser
@@ -23,8 +25,6 @@ my %table = (
     'class A { class B { }; class C { } }'                            => <A A::B A::C>,
     'module A; class B { class C { }; class D { ... } }; class E { }' => <A A::B A::B::C A::E>,
 );
-
-my $parser = File::Inspector::Namespace.new;
 
 for %table.kv -> $code, $expected {
     $parser.parse( :$code );
