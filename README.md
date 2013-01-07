@@ -5,14 +5,14 @@ This module is intended to provide a way to get the GLOBAL symbols a piece of co
 
 Usage:
 
-  use File::Inspector::Namespace;
-  my $parser = File::Inspector::Namespace.new( code => 'module A; class B { class C { } }' );
-  say $parser.namespace;
-
-  OUTPUT (.perl): ("A", "A::B", "A::B::C")
-  
-  $parser.parse( code => slurp 'some/interesting/file.pm' )
-  say $parser.namespace;
+	use File::Inspector::Namespace;
+	my $parser = File::Inspector::Namespace.new( code => 'module A; class B { class C { } }' );
+	say $parser.namespace;
+	
+	OUTPUT (.perl): ("A", "A::B", "A::B::C")
+	
+	$parser.parse( code => slurp 'some/interesting/file.pm' )
+	say $parser.namespace;
 
 The method .namespace will give you an array of symbols, depending on the order in wich they appear in the code.
 Recognizable symbols are declarations of:
